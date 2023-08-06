@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @project %>
+<ul>
+<% @project.tasks.each do |task| %>
+  <li><%= link_to task.task_title,task %></li>
+  <li><%= link_to task.task_title%></li>
+<% end %>
+</ul>
+<% if current_user && current_user.admin? %>
+<div>
+  <%= link_to "Edit this project", edit_project_path(@project) %> |
+  <%= link_to "Back to projects", projects_path %>
+
+  <%= button_to "Destroy this project", @project, method: :delete %>
+  <%= link_to "next put task and deadline in project", new_task_path,class: "btn"%>
+</div><% end %>
+
+<%= render "common/footer" %>

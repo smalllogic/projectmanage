@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @task %>
+
+<h2>comments</h2><hr>
+<!-- 显示已有的评论 -->
+<% @task.comments.each do |comment| %>
+  <p><strong><%= comment.user.username %></strong>: <%= comment.content %></p>
+<% end %>
+
+<hr>
+
+
+<!-- 跳转到评论页面 -->
+<div class="text-center">
+  <%= link_to("let comments", new_task_comment_path(@task), :style => "font-size: 30px; text-decoration:underline;") %>
+</div>
+
+<% if current_user && current_user.admin? %>
+
+<div>
+  <%= link_to "Edit this task", edit_task_path(@task) %> |
+  <%= link_to "Back to tasks", tasks_path %>
+
+  <%= button_to "Destroy this task", @task, method: :delete %>
+</div>
+<% end %>
+<%= render "common/footer" %>

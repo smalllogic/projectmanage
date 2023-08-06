@@ -1,0 +1,12 @@
+<!-- app/views/sessions/new.html.erb -->
+<h1>登录</h1>
+
+<%= form_with(model:User.new,url: login_path) do |form| %>
+  <%= form.label :username %>
+  <%= form.text_field :username %>
+
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+
+  <%= form.submit '登录' %>
+<% end %>

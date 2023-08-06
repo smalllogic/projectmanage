@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @thedeadline %>
+<% if current_user && current_user.admin? %>
+<div>
+  <%= link_to "Edit this thedeadline", edit_thedeadline_path(@thedeadline) %> |
+
+
+  <%= button_to "Destroy this thedeadline", @thedeadline, method: :delete %>
+</div>
+<% end %>
+  <%= link_to "Back to thedeadlines", thedeadlines_path,class: 'btn'%>

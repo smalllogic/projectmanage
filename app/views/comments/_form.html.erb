@@ -1,0 +1,5 @@
+<%= form_for [@task, @comment] do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content, placeholder: "发表评论..." %>
+  <%= f.submit "送出" %>
+<% end %>

@@ -1,0 +1,7 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  deadlinetime: 2023-08-05 11:42:10
+
+two:
+  deadlinetime: 2023-08-05 11:42:10

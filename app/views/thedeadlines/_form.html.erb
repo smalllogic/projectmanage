@@ -1,0 +1,22 @@
+<%= form_with(model: thedeadline) do |form| %>
+  <% if thedeadline.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(thedeadline.errors.count, "error") %> prohibited this thedeadline from being saved:</h2>
+
+      <ul>
+        <% thedeadline.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :deadlinetime, style: "display: block" %>
+    <%= form.datetime_field :deadlinetime %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

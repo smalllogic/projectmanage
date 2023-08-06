@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Teams</h1>
+
+
+
+
+<div id="teams">
+  <table>
+    <thead>
+      <tr>
+        <th>Team Name</th>
+        <th>Show Team projects</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% @teams.each do |team| %>
+        <tr>
+          <td><%= team.title %></td>
+          <td><%= link_to "Show projects and another", team %></td>
+          <td>
+                      <% unless current_user.teams.include?(team) %>
+                        <%= form_with(model: current_user, url: join_team_user_path(current_user), method: :put) do |form| %>
+                          <%= form.hidden_field :team_id, value: team.id %>
+                          <%= form.submit 'Join Team' %>
+                        <% end %>
+                      <% else %>
+                        <%= button_to "Leave Team", leave_team_user_path(current_user, team_id: team.id), method: :delete %>
+                      <% end %>
+                    </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% if current_user && current_user.admin? %>
+<%= link_to "first create thedeadline", new_thedeadline_path,class: "btn" %>
+
+<%= link_to "New team", new_team_path ,class: "btn"%>
+<%= link_to "put project in team", new_project_path,class: "btn"%>
+<%= link_to "put task and deadlint to project", new_task_path,class: "btn" %>
+<% end %>
